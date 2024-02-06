@@ -127,10 +127,21 @@ fn main() {
 
     let mut is_read = false;
 
-    for i in 0..conf.iter {
-        let act = if is_read { "READ" } else { "WRITE" };
+    let mut cnt_rw = (0, 0);
 
-        println!("Iteration {} , {}", i, act);
+    for i in 0..conf.iter {
+        let act = if is_read {
+            cnt_rw.0 += 1;
+            "READ"
+        } else {
+            cnt_rw.1 += 1;
+            "WRITE"
+        };
+
+        println!(
+            "Iteration {} is {} (R: {} W: {})",
+            i, act, cnt_rw.0, cnt_rw.1
+        );
 
         if is_read && i > 0 {
             /* We go back at start to have someting to read */
