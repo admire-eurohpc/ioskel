@@ -11,8 +11,11 @@ do
 	do
 		for iter in 10 20 30
 		do
-			SIZE_MB=$((size * 1024 * 1024))
-			ln -s "${PWD}/target/debug/ioskel" "./exes/ioskel.${comp}.${SIZE_MB}.${iter}"
+			for proba in 0 20 40 50 60 80 100
+			do
+				SIZE_MB=$((size * 1024 * 1024))
+				ln -s "${PWD}/target/debug/ioskel" "./exes/ioskel.${comp}.${SIZE_MB}.${iter}.${proba}"
+			done
 		done
 	done
 
